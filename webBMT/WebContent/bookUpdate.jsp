@@ -19,7 +19,6 @@
 			
 				<table class="table_form">
 					<tbody>
-						
 						<tr>
 							<th>タイトル</th>
 							<td><input type="text" name="title"value=<jsp:getProperty property="title" name="registerinfo" />></td>
@@ -43,10 +42,7 @@
 					</tbody>
 				</table>
 						<input class="common_button" type="button" onclick="location.href='./login.jsp'" value="戻る">
-						
-				<input class="common_button" type="submit" name="submit"  value="編集登録"/>
-				<input type="hidden" name="pid"value=<jsp:getProperty property="pid" name="registerinfo" />>
-					<input class="common_button" type="submit" name="submit"  value="削除"/>
+				<input class="common_button" type="submit" name="submit"  value="登録"/>
 				
 			</form>
 			

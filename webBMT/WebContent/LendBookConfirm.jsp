@@ -2,6 +2,7 @@
 <%@ page import="book.ItemBean" %>
 <%@ page import="login.LoginUserBean" %>
  <jsp:useBean id="info"  scope="session" class="book.ItemBean"/>
+ <jsp:useBean id="user"  scope="session" class="login.LoginUserBean"/>
 <%@ page session="true" %>
 
 <!DOCTYPE html>
@@ -16,7 +17,7 @@
 			
 			<h1>貸出確認画面</h1>
 			
-			<p>返却予定日を入力してください。</p>
+			<p>返却予定日を選択してください。</p>
 			<form action="./LendRegisterServlet" method="post">
 				<table class="table_form">
 					<tbody>
@@ -37,9 +38,8 @@
 					</tbody>
 				</table>
 				<input class="common_button" type="button" onclick="location.href='./login.jsp'" value="戻る">
-				<input type="hidden" name="pid"  value=<jsp:getProperty property="pid" name="info" />>
-				<input class="common_button" type="submit" name="submit"  value="貸出登録"/>
-				<% String session_id = session.getId();%>
+				<input class="common_button" type="submit" name="submit"  value="登録"/>
+				
 			</form>
 			
 		</div>
