@@ -45,6 +45,10 @@
 							<th>パスワード</th>
 							<td><input type="password" name="pass"/></td>
 						</tr>
+						<tr>
+							<th>確認用パスワード</th>
+							<td><input type="password" name="pass"/></td>
+						</tr>
 					</tbody>
 				</table>
 				<input class="common_button" type="submit" name="submit"  value="新規登録"/>
