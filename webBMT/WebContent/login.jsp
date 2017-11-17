@@ -42,6 +42,11 @@
 							<th>メールアドレス</th>
 							<td><input type="text" name="mail"/></td>
 						</tr><tr>
+						<tr>
+							<th>確認用メールアドレス</th>
+							<td><input type="text" name="mail"/></td>
+						</tr>
+						<tr>
 							<th>パスワード</th>
 							<td><input type="password" name="pass"/></td>
 						</tr>
