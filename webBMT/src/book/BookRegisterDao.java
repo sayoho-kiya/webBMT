@@ -41,7 +41,7 @@ public class BookRegisterDao {
 			rs = ps.executeUpdate();
 
 		} catch (ClassNotFoundException ce) {
-			//++++++++++++++++++++++++
+
 			//JDBCドライバが見つからなかった場合
 			ce.printStackTrace();
 		}

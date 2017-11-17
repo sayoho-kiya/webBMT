@@ -29,7 +29,7 @@
 				<input class="common_button" type="submit" name="submit"  value="ログイン"/>
 
 			</form>
-				<h1>※新規登録の方は     こちら</h1>
+				<h1>※新規登録の方はこちら</h1>
 			<p>お名前・メールアドレス・パスワードを入力して下さい。</p>
 			<form action="./NewRegisterServlet" method="post">
 				<table class="table_form">
