@@ -1,4 +1,6 @@
 package login;
+import static login.Property.*;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -10,16 +12,14 @@ public class ForgotPWDao {
 	private Connection con;
 	private ResultSet rs;
 	private Statement st;
-	private static String url = "jdbc:mysql://localhost/bookmgr?autoReconnect=true&useSSL=false";
-	private static String user = "root";
-	private static String pw = "root";
+
 
 	//データベースに登録
 	public ResultSet registerUser(String name, String mailaddress) throws SQLException {
 		try {
 			//JDBCドライバのロード
 			Class.forName("com.mysql.jdbc.Driver");
-			con = DriverManager.getConnection(url, user, pw);
+			con = DriverManager.getConnection(Property.url, user, pw);
 
 			//SQL文を作成
 			String sql = "select id,pass from user where name='" + name + "' and address='" + mailaddress + "';";

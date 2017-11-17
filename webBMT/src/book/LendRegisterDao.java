@@ -1,4 +1,6 @@
 package book;
+import static login.Property.*;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -8,15 +10,15 @@ import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import login.Property;
+
 public class LendRegisterDao {
 
 	private Connection con;
 	private Statement st;
 	private int rs;
 	private PreparedStatement ps = null;
-	private static String url = "jdbc:mysql://localhost/bookmgr?autoReconnect=true&useSSL=false";
-	private static String user = "root";
-	private static String pw = "root";
+
 
 	//本日の日付取得
 	private static Date today = new Date(); //java.util.Date型
@@ -28,7 +30,7 @@ public class LendRegisterDao {
 		try {
 			//JDBCドライバのロード
 			Class.forName("com.mysql.jdbc.Driver");
-			con = DriverManager.getConnection(url, user, pw);
+			con = DriverManager.getConnection(Property.url, user, pw);
 
 			//SQL文を作成
 

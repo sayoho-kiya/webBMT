@@ -1,4 +1,6 @@
 package login;
+import static login.Property.*;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -10,16 +12,14 @@ public class LoginDao {
 	private Connection con;
 	private ResultSet rs;
 	private PreparedStatement ps = null;
-	private static String url = "jdbc:mysql://localhost/bookmgr?autoReconnect=true&useSSL=false";
-	private static String user = "root";
-	private static String pw = "root";
+
 
 	//データベースから指定されたIDとパスワードを使ってユーザ情報を検索
 	public ResultSet selectUser(String id, String pass) throws SQLException {
 		try {
 			//JDBCドライバのロード
 			Class.forName("com.mysql.jdbc.Driver");
-			con = DriverManager.getConnection(url, user, pw);
+			con = DriverManager.getConnection(Property.url, user, pw);
 
 			//SQL文を作成
 			ps = con.prepareStatement("select name,address from user where id=? and pass=?;");

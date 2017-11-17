@@ -1,5 +1,7 @@
 package book;
 
+import static login.Property.*;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -7,22 +9,22 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import login.Property;
+
 public class LendingDao {
 
 	private Connection con;
 	private Statement st;
 	private ResultSet rs;
 	private PreparedStatement ps = null;
-	private static String url = "jdbc:mysql://localhost/bookmgr?autoReconnect=true&useSSL=false";
-	private static String user = "root";
-	private static String pw = "root";
+
 
 	//データベースからBook_list取得
 	public ResultSet getBookList() throws SQLException {
 		try {
 			//JDBCドライバのロード
 			Class.forName("com.mysql.jdbc.Driver");
-			con = DriverManager.getConnection(url, user, pw);
+			con = DriverManager.getConnection(Property.url, user, pw);
 
 			//SQL文を作成
 			ps = con.prepareStatement("select*from book_list;");
