@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import login.Property;
 
@@ -12,6 +13,7 @@ public class BookRegisterDao {
 
 	private Connection con;
 	private int rs;
+	private Statement st;
 	private PreparedStatement ps = null;
 
 
@@ -53,7 +55,7 @@ public class BookRegisterDao {
 
 			//SQL文を作成
 
-			String sql = "UPDATE BOOK_LIST SET TITLE=?, PUBLISHER=?, AUTHOR=?, GENRE=?, PRICE='?', AREA='?' WHERE PID='?';";
+			String sql = "UPDATE BOOK_LIST SET TITLE=?, PUBLISHER=?, AUTHOR=?, GENRE=?, PRICE=?, AREA=? WHERE PID=?;";
 
 			ps = con.prepareStatement(sql);
 			ps.setString(1, title);
@@ -61,12 +63,28 @@ public class BookRegisterDao {
 			ps.setString(3, author);
 			ps.setString(4, genre);
 			ps.setInt(5, price);
-			ps.setInt(6, 0);
-			ps.setDouble(7, 0);
-			ps.setString(8, area);
-			ps.setString(9, pid);
+			ps.setString(6, area);
+			ps.setString(7, pid);
 
 			rs = ps.executeUpdate();
+
+		} catch (ClassNotFoundException ce) {
+			//JDBCドライバが見つからなかった場合
+			ce.printStackTrace();
+		}
+		return rs;
+	}
+
+	public int deleteBook(String pid) throws SQLException {
+		try {
+			//JDBCドライバのロード
+			Class.forName("com.mysql.jdbc.Driver");
+			con = DriverManager.getConnection(url, user, pw);
+
+			//SQL文を作成
+			String sql = "DELETE FROM BOOK_LIST WHERE PID='" + pid + "';";
+			st = con.createStatement();
+			rs = st.executeUpdate(sql);
 
 		} catch (ClassNotFoundException ce) {
 			//JDBCドライバが見つからなかった場合
